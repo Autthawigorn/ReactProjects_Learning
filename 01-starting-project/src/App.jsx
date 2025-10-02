@@ -1,12 +1,33 @@
+import { useState } from "react";
+
 import { CORE_CONCEPTS } from "./data";
 import Header from "./components/Header/Header.jsx";
 import CoreConcept from "./components/CoreConcept.jsx";
 import TabButton from "./components/TabButton.jsx";
+import { EXAMPLES } from "./data.js";
 
 function App() {
- function handleSelect(selectedButton) {
-  // selectedButon => 'components', jsx, 'props, 'state'
-    console.log(selectedButton);
+  const [selectedTopic, setSelectedTopic] = useState(null);
+
+  function handleSelect(selectedButton) {
+    // selectedButton holds the key of the EXAMPLES object ("components", "jsx", "props", "state")
+    setSelectedTopic(selectedButton);
+    //console.log(selectedTopic);
+  }
+
+  console.log("APP COMPONENT EXECUTING");
+
+  let tabContent = <p>Please select a topic. </p>;
+  if (selectedTopic) {
+    tabContent = (
+      <div id="tab-content">
+        <h3> {EXAMPLES[selectedTopic].title} </h3>
+        <p> {EXAMPLES[selectedTopic].description} </p>
+        <pre>
+          <code>{EXAMPLES[selectedTopic].code}</code>
+        </pre>
+      </div>
+    );
   }
 
   return (
@@ -30,12 +51,12 @@ function App() {
           <h2>Examples</h2>
           <menu>
             {/* <TabButton label = "Dummy"></TabButton> */}
-            <TabButton onSelect={() => handleSelect("components")}> Components </TabButton>
-            <TabButton onSelect={() => handleSelect("JSX")}> JSX </TabButton>
-            <TabButton onSelect={() => handleSelect("Props")}> Props </TabButton>
-            <TabButton onSelect={() => handleSelect("State")}> State </TabButton>
+            <TabButton onSelect={() => handleSelect("components")}>Components</TabButton>
+            <TabButton onSelect={() => handleSelect("jsx")}> JSX </TabButton>
+            <TabButton onSelect={() => handleSelect("props")}> Props</TabButton>
+            <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
-          Dynamic Content
+          {tabContent}
         </section>
       </main>
     </div>
