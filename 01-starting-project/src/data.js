@@ -80,3 +80,11 @@ function Counter() {
 }`,
   },
 };
+
+// mimic enum 
+export const TOPICS = Object.freeze({
+  COMPONENTS: "components",
+  JSX: "jsx",
+  PROPS: "props",
+  STATE: "state",
+});
