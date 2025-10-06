@@ -1,9 +1,9 @@
 // ** 'Chidren Props' approach
-export default function TabButton({ children, onSelect, isSelected }) {
+export default function TabButton({ children, isSelected, ...props }) { //...props for forwording prop.onclick
     console.log("TABBUTTON COMPONENT EXECUTING");
   return (
     <li>
-      <button className={isSelected ? "active" : ""} onClick={onSelect}> {children} </button>
+      <button className={isSelected ? "active" : ""} {...props}> {children} </button>
     </li>
   );
 }
