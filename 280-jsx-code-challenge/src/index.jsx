@@ -1,10 +1,17 @@
-//Create a react app from scratch.
-//It should display a h1 heading.
-//It should display an unordered list (bullet points).
-//It should contain 3 list elements.
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-// If you're running this locally in VS Code use the commands:
-// npm install
-// to install the node modules and
-// npm run dev
-// to launch your react project in your browser
+const name = "Autthawigorn";
+const currentDate = new Date().toLocaleDateString();
+const year = new Date().getFullYear();
+
+function App() {
+  return (
+    <>
+      <h1>Hi {Math.round(Math.random() * 10)}</h1>;<p>My name is {name}</p>
+      <p>Today's date is {currentDate}</p>
+      <p>Copyright {year}</p>
+    </>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);

@@ -7,6 +7,7 @@ export default function CoreConcepts() {
       <h2>Core Concepts</h2>
       <ul>
         {CORE_CONCEPTS.map((item, index) => (
+          // Gives React a unique ID to track each list item
           <CoreConcept key={item.title} {...item} />
         ))}
         {/* <CoreConcept
