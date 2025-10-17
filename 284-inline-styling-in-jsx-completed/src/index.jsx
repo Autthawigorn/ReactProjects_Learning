@@ -1,14 +1,11 @@
-
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
-
-
+import ReactDOM from "react-dom/client"; // 👈 note the "/client" part!
 
 const App = () => {
-  const [color, setColor] = useState("red"); // initial color
+  const [color, setColor] = useState("red");
 
   const handleClick = () => {
-    setColor("blue"); // change color on click
+    setColor("blue");
   };
 
   const customStyle = {
@@ -23,13 +20,8 @@ const App = () => {
       Hello World!
     </h1>
   );
-}
+};
 
-ReactDOM.render(<App />, document.getElementById("root"));
-
-
-// If you're running this locally in VS Code use the commands:
-// npm install
-// to install the node modules and
-// npm run dev
-// to launch your react project in your browser
+// ✅ Correct for React 18+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
